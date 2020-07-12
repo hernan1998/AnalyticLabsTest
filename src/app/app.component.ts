@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   title = 'AnalyticLabTest';
 
   // ----------- Variables -----------------------------
-  Commerces = [];
   ChartLabels = [];
   ChartData = [];
 
@@ -28,7 +27,7 @@ export class AppComponent implements OnInit {
     { data: this.ChartData, label: 'Sales' },
   ];
   public lineChartColors: Color[] = [{
-    backgroundColor: 'rgba(77,83,96,0.2)',
+    backgroundColor: 'rgb(184,218,255)',
     borderColor: 'rgba(77,83,96,1)',
     pointBackgroundColor: 'rgba(77,83,96,1)',
     pointBorderColor: '#fff',
@@ -42,11 +41,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.json.getJson('https://alw-lab.herokuapp.com/commerces').subscribe((res: any) => {
-      res.forEach(element => {
-        this.Commerces.push(element);
-      });
-    });
     this.json.getJson('https://alw-lab.herokuapp.com/commerces/graph').subscribe((data: any) => {
       data.forEach(element => {
         this.ChartLabels.push(element.name);

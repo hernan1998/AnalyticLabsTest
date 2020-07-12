@@ -20,7 +20,7 @@ export class MapboxComponent implements OnInit {
     // Llamado a la api GET /commerces/layer
     this.json.getJson('https://alw-lab.herokuapp.com/commerces/layer').subscribe((res: any) => {
       this.geoJson = res;
-      console.log(this.geoJson);
+      console.log(res);
     });
 
     // Mapbox Key definida en los Enviroments.ts
@@ -35,8 +35,8 @@ export class MapboxComponent implements OnInit {
     this.mapa = new mapboxgl.Map({
       container: 'mapbox-container', // Container id
       style: 'mapbox://styles/hernan1122/ckciapuxj1l2b1iqmmxu1j353',
-      center: [-74.1252309, 4.6544973], // Longitud, Latitud
-      zoom: 10.3 // Zoom Inicial
+      center: [-74.1252309, 4.6544978], // Longitud, Latitud
+      zoom: 10.4 // Zoom Inicial
     });
 
     this.mapa.addControl(new mapboxgl.NavigationControl());
@@ -58,8 +58,6 @@ export class MapboxComponent implements OnInit {
           'text-field': '{name}',
           'text-size': 14,
           'text-transform': 'uppercase',
-          'icon-image': 'marker-15',
-          'icon-size': 1.5,
           'text-offset': [0, 1.5]
         },
         paint: {
@@ -68,6 +66,19 @@ export class MapboxComponent implements OnInit {
           'text-halo-width': 2
         }
       });
+
+      // Añadido de los PopUp
+      this.geoJson.features.forEach(element => {
+        var popup = new mapboxgl.Popup({ offset: 25 })
+          .setLngLat(element.geometry.coordinates)
+          .setHTML('<h3>' + element.properties.name + '</h3><p>' + element.properties.owner + '</p>');
+
+        var marker = new mapboxgl.Marker()
+          .setLngLat(element.geometry.coordinates)
+          .setPopup(popup)
+          .addTo(this.mapa);
+      });
+
     });
 
 

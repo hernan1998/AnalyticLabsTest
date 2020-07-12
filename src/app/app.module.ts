@@ -6,13 +6,13 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { MapboxComponent } from './components/mapbox/mapbox.component';
-import { ChartComponent } from './components/chart/chart.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapboxComponent,
-    ChartComponent
+    TableComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,19 +14,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#map">
               <span class="fas fa-map-marked-alt"></span>
               MapBox
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#chart">
               <span class="far fa-chart-bar"></span>
               Sales Chart
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#list">
               <span class="fas fa-list-ol"></span>
               Commerces List
             </a>
@@ -38,51 +38,23 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 id="dash" class="h2">Dashboard</h1>
       </div>
 
-      <h2> MapBox </h2>
+      <h2 id="map"> MapBox </h2>
       <hr>
       <app-mapbox></app-mapbox>
-      <h2> Sales Chart</h2>
+      <hr>
+      <h2 id="chart"> Sales Chart</h2>
       <hr>
       <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
         [legend]="barChartLegend" [chartType]="barChartType" [colors]="lineChartColors">
       </canvas>
 
       <hr>
-      <h2>Commerces List</h2>
+      <h2 id="list">Commerces List</h2>
       <hr>
-      <div class="table-responsive">
-        <table class="table table-borderless table-hover table-sm">
-          <thead>
-            <tr class="table-primary">
-              <th>id</th>
-              <th>Name</th>
-              <th>Nit</th>
-              <th>Address</th>
-              <th>Phone</th>
-              <th>Owner</th>
-              <th>Schedule</th>
-              <th>Days</th>
-              <th>Sales</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of Commerces">
-              <td>{{ item.id }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.nit }}</td>
-              <td>{{ item.address }}</td>
-              <td>{{ item.phone }}</td>
-              <td>{{ item.owner }}</td>
-              <td>{{ item.schedule }}</td>
-              <td>{{ item.days }}</td>
-              <td>{{ item.sales }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <app-table></app-table>
 
     </main>
   </div>
