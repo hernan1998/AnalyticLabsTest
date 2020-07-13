@@ -4,13 +4,14 @@
 
 <div class="container-fluid">
   <div class="row">
+
+    <!---------------------- SideBar --------------------------->
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="#">
-              <span></span>
-              Dashboard <span class="sr-only">(current)</span>
+              Dashboard
             </a>
           </li>
           <li class="nav-item">
@@ -28,31 +29,33 @@
           <li class="nav-item">
             <a class="nav-link" href="#list">
               <span class="fas fa-list-ol"></span>
-              Commerces List
+              Commerces
             </a>
           </li>
         </ul>
       </div>
     </nav>
 
+    <!--------------------- Main Container --------------------->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 id="dash" class="h2">Dashboard</h1>
       </div>
 
-      <h2 id="map"> MapBox </h2>
+      <h3 id="map"> MapBox </h3>
       <hr>
       <app-mapbox></app-mapbox>
       <hr>
-      <h2 id="chart"> Sales Chart</h2>
+      <h3 id="chart"> Sales Chart</h3>
       <hr>
+      <!--------------- Canvas Chart // Variables configuradas en .ts ------------------->
       <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
         [legend]="barChartLegend" [chartType]="barChartType" [colors]="lineChartColors">
       </canvas>
 
       <hr>
-      <h2 id="list">Commerces List</h2>
+      <h3 id="list">Commerces</h3>
       <hr>
       <app-table></app-table>
 

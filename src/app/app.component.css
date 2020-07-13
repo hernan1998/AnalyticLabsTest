@@ -104,4 +104,10 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
-  
+ 
+  .btn-grad {
+    background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%)
+  }
+  .btn-grad:hover { 
+    background-position: right center; 
+  }

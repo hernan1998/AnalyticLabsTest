@@ -22,16 +22,14 @@ export class AppComponent implements OnInit {
   };
   public barChartLabels = this.ChartLabels;
   public barChartType = 'horizontalBar';
-  public barChartLegend = true;
+  public barChartLegend = false;
   public barChartData = [
     { data: this.ChartData, label: 'Sales' },
   ];
   public lineChartColors: Color[] = [{
-    backgroundColor: 'rgb(184,218,255)',
-    borderColor: 'rgba(77,83,96,1)',
+    backgroundColor: 'rgb(184,218,255,0.8)',
     pointBackgroundColor: 'rgba(77,83,96,1)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
+    pointHoverBackgroundColor: '#ffffff',
     pointHoverBorderColor: 'rgba(77,83,96,1)'
   }];
 

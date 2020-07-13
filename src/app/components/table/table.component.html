@@ -1,30 +1,29 @@
-<div class="table-responsive">
-    <table class="table table-borderless table-hover table-sm">
-        <thead>
-            <tr class="table-primary">
-                <th>id</th>
-                <th>Name</th>
-                <th>Nit</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Owner</th>
-                <th>Schedule</th>
-                <th>Days</th>
-                <th>Sales</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of Commerces">
-                <td>{{ item.id }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.nit }}</td>
-                <td>{{ item.address }}</td>
-                <td>{{ item.phone }}</td>
-                <td>{{ item.owner }}</td>
-                <td>{{ item.schedule }}</td>
-                <td>{{ item.days }}</td>
-                <td>{{ item.sales }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col mb-4" *ngFor="let item of Commerces">
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img
+                            src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/code_128.png?raw=true">
+                        <h3>{{ item.name }}</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <ul>
+                            <li>Id: {{ item.id }}</li>
+                            <li>Nit: {{ item.nit }}</li>
+                            <li>Address: {{ item.address }}</li>
+                            <li>Phone: {{ item.phone }}</li>
+                            <li>Owner: {{ item.owner }}</li>
+                            <li>Schedule: {{ item.schedule }}</li>
+                            <li>Days: {{ item.days }}</li>
+                            <li>Sales: {{ item.sales }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

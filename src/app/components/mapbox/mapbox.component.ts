@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { JsonService } from '../../json.service';
 import * as mapboxgl from 'mapbox-gl';
@@ -10,14 +10,15 @@ import * as mapboxgl from 'mapbox-gl';
 })
 export class MapboxComponent implements OnInit {
 
-  // Variables 
+  //------------- Variables -------------
   mapa: mapboxgl.Map;
   geoJson: any;
 
-  constructor(public json: JsonService) { }
+  constructor(public json: JsonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    // Llamado a la api GET /commerces/layer
+
+    //------------ Llamado a la api GET /commerces/layer --------------------
     this.json.getJson('https://alw-lab.herokuapp.com/commerces/layer').subscribe((res: any) => {
       this.geoJson = res;
       console.log(res);
@@ -31,7 +32,7 @@ export class MapboxComponent implements OnInit {
   // Funcion Con los datos para construir el Mapa
   buildmap() {
 
-    // Inicializacion del Mapa
+    //------------------ Inicializacion del Mapa ----------------
     this.mapa = new mapboxgl.Map({
       container: 'mapbox-container', // Container id
       style: 'mapbox://styles/hernan1122/ckciapuxj1l2b1iqmmxu1j353',
@@ -39,8 +40,10 @@ export class MapboxComponent implements OnInit {
       zoom: 10.4 // Zoom Inicial
     });
 
+    //---------- Añadir controles de navegacion -----------------
     this.mapa.addControl(new mapboxgl.NavigationControl());
 
+    //---------- Añadir Capas al Cargar mapa --------------------
     this.mapa.on('load', (event) => {
       this.mapa.addSource('customMarker', {
         type: 'geojson',
@@ -58,7 +61,7 @@ export class MapboxComponent implements OnInit {
           'text-field': '{name}',
           'text-size': 14,
           'text-transform': 'uppercase',
-          'text-offset': [0, 1.5]
+          'text-offset': [0, 2]
         },
         paint: {
           'text-color': '#1f197e',
@@ -69,11 +72,14 @@ export class MapboxComponent implements OnInit {
 
       // Añadido de los PopUp
       this.geoJson.features.forEach(element => {
-        var popup = new mapboxgl.Popup({ offset: 25 })
+        const div = this.renderer.createElement('div');
+        this.renderer.addClass(div, "marker");
+        var popup = new mapboxgl.Popup({ offset: 25, closeButton: false, })
           .setLngLat(element.geometry.coordinates)
           .setHTML('<h3>' + element.properties.name + '</h3><p>' + element.properties.owner + '</p>');
 
-        var marker = new mapboxgl.Marker()
+
+        var marker = new mapboxgl.Marker(div)
           .setLngLat(element.geometry.coordinates)
           .setPopup(popup)
           .addTo(this.mapa);
