@@ -76,7 +76,7 @@ export class MapboxComponent implements OnInit {
         this.renderer.addClass(div, "marker");
         var popup = new mapboxgl.Popup({ offset: 25, closeButton: false, })
           .setLngLat(element.geometry.coordinates)
-          .setHTML('<h3>' + element.properties.name + '</h3><p>' + element.properties.owner + '</p>');
+          .setHTML('<h5>' + element.properties.name + '</h5><p>' + element.properties.owner + '</p>' + '<p>' + element.properties.days + '</p>' + '<p>' + element.properties.schedule + '</p>');
 
 
         var marker = new mapboxgl.Marker(div)
